@@ -6,6 +6,7 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include <errno.h>
+#include <openssl/ssl.h>
 
 #include <public.h>
 #include <common_net.h>
@@ -23,6 +24,10 @@ ssl_rdwr_handler(connections_head_t *head, connection_t *conn)
     int done = 0;
     ssize_t count, wrlen;
     char buf[512];
+    SSL_SESSION *sess;
+
+    sess = SSL_get_session(conn->ssl);
+    printf("The session is %p\n", sess);
 
     while (1) {
         count = SSL_read(conn->ssl, buf, sizeof buf);

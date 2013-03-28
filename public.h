@@ -17,4 +17,6 @@
 #define CLI_CERTFILE "/home/wangdeliang/certs/cert_cli.crt"
 #define CLI_PRIKEY "/home/wangdeliang/certs/pri_cli.pem"
 
+#define SESSION_FILE "saved_session"
+
 #endif

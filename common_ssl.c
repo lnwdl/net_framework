@@ -156,6 +156,9 @@ init_ssl_ctx(char *cert, char *prikey, char *cafile)
             verify_callback);
 
     SSL_CTX_set_verify_depth(ctx, 4);
+    
+    /* set session cache */
+    SSL_CTX_set_session_id_context(ctx, (unsigned char *)"lnwdl", sizeof("lnwdl"));
 
     return ctx;
 
